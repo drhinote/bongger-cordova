@@ -1,0 +1,20 @@
+<ion-view title="Wallet" hide-nav-bar="true" cache-view="false" id="page2" style="background-color:#EEEEDD;">
+  <ion-content padding="true" class="manual-ios-statusbar-padding">
+    <div class="coinmarketcap-currency-widget" data-currency="bongger" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="false" data-volume="true" data-stats="USD" data-statsticker="true"></div>
+    <div id="wallet-markdown3" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">Balance:
+        <strong>{{ balance | number : 8 }}</strong>
+      </p>
+    </div>
+    <div id="wallet-markdown7" class="show-list-numbers-and-dots">
+      <p style="color:#BBBBBB;">Pending: {{ pending | number : 8 }}</p>
+    </div>
+    <button id="wallet-button10" ng-click="refresh()" style="color:#05B921;" class="button button-positive button-block">Refresh Balance</button>
+    <ion-list id="wallet-list1">
+      <ion-item class="item-divider" id="wallet-list-item-divider1"> Transactions</ion-item>
+      <ion-item id="wallet-list-item4" ng-repeat="transaction in transactions track by $index">{{ print(transaction) }}
+        <span class="item-note">{{ note(transaction) }}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

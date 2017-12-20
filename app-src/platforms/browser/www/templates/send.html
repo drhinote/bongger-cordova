@@ -1,0 +1,39 @@
+<ion-view title="Send" hide-nav-bar="true" cache-view="false" id="page3" style="background-color:none;">
+  <ion-content padding="true" class="manual-ios-statusbar-padding">
+    <form id="send-form10" class="list">
+      <div id="send-markdown6" class="show-list-numbers-and-dots">
+        <p style="color:#008000;">{{ output }}</p>
+      </div>
+      <ion-item class="item-divider" id="send-list-item-divider2"> Network Fee: 1 Bongger</ion-item>
+      <label class="item item-input lg" id="send-input8">
+        <span class="input-label">Amount</span>
+        <input type="number" placeholder="Max {{ storage.balance() | number : 8 }}" ng-model="info.amount" step="0.00000001" min="0.00000001" max="{{ storage.balance() }}" ng-change="info.usd = price * info.amount">
+      </label>
+      <label class="item item-input lg" id="send-input10">
+        <span class="input-label">in USD</span>
+        <input type="number" placeholder="" step="0.01" ng-model="info.usd" ng-change="info.amount = info.usd/price">
+      </label>
+      <div id="send-container9" ng-show="info.amount">
+        <form id="send-form11" class="list">
+          <label class="item item-select lg" id="send-select2">
+            <span class="input-label">Address Book</span>
+            <select ng-options="address as label for (label, address) in storage.data.labels" ng-model="info.address"></select>
+          </label>
+          <label class="item item-input lg" id="send-input9">
+            <span class="input-label">Address</span>
+            <input type="text" placeholder="" pattern="^[AB][^OIl]{25,34}$" ng-model="info.address">
+          </label>
+        </form>
+      </div>
+      <div id="send-container8" ng-show="!(!info.amount || !info.address)">
+        <form id="send-form13" class="list">
+          <label class="item item-input lg" id="send-input11">
+            <span class="input-label">Name</span>
+            <input type="text" placeholder="Save to Address Book" ng-model="info.newLabel">
+          </label>
+          <button id="send-button9" ng-click="send()" style="color:#05B921;" class="button button-positive button-block">Send</button>
+        </form>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

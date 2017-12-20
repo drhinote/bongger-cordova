@@ -1,0 +1,70 @@
+<ion-view title="Login" hide-nav-bar="true" cache-view="false" id="page5" style="background-color:#EEEEDD;">
+  <ion-content padding="true" class="manual-ios-statusbar-padding">
+    <form id="login-form1" class="list">
+      <div>
+        <img src="img/XTt6QJIKRZBQ7ECFMxPC_bongger.PNG" style="display: block; width: 75%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+      <div class="spacer" style="width: 300px; height: 35.9659px;"></div>
+      <div id="login-container4" ng-show="storage.encrypted" ng-if="!showPhrase">
+        <form id="login-form9" class="list">
+          <label class="item item-input lg" id="login-input1">
+            <span class="input-label">Pin</span>
+            <input type="password" placeholder="" ng-model="password.pin" pattern="[0-9]{4}">
+          </label>
+          <div class="spacer" style="width: 300px; height: 70px;"></div>
+          <button id="login-button8" ng-click="reset()" style="color:#05B921;" class="button button-stable button-small button-block">{{ showReset?'Are you sure?':'Reset Wallet' }}</button>
+          <div id="login-container6" ng-if="showReset">
+            <div id="login-button-bar1" class="button-bar">
+              <button id="login-button12" ng-click="resetWallet()" style="color:#05B921;" class="button button-positive button-block">Yes</button>
+              <button id="login-button13" ng-click="cancel()" class="button button-assertive button-block">No</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </form>
+    <div id="login-container5" ng-if="showPhrase">
+      <div id="login-markdown2" class="show-list-numbers-and-dots">
+        <p style="color:#FF0000;">Please write this phrase down and save it in a safe place. You can use it to restore your wallet on another device if this device is lost or stolen.</p>
+
+        <p style="color:#FF0000;">
+          <strong> {{ storage.data.phrase }} </strong>
+        </p>
+      </div>
+      <a ui-sref="home.wallet()" id="login-button7" ng-click="hidePhrase()" style="color:#05B921;" class="button button-positive button-block">Continue</a>
+    </div>
+    <div id="login-container3" ng-show="restoreExisting" class="lg">
+      <form id="login-form6" class="list">
+        <label class="item item-input lg" id="login-input7">
+          <span class="input-label">Pin</span>
+          <input type="password" placeholder="" ng-model="password.newPin" pattern="[0-9]{4}">
+        </label>
+        <label class="item item-input lg" id="login-textarea1">
+          <span class="input-label">Phrase</span><textarea placeholder="" ng-model="password.phrase" pattern="([A-Za-z]+ ){11}[A-Za-z]+"></textarea></label>
+        <button id="login-button4" ng-click="restore()" ng-show="!(!password.phrase || !password.newPin)" style="color:#05B921;"
+          class="button button-positive button-block">Restore Wallet</button>
+        <button id="login-button6" ng-click="cancel()" class="button button-assertive button-block">Cancel</button>
+      </form>
+    </div>
+    <div id="login-container2" ng-if="!storage.encrypted" ng-show="!(createNew || restoreExisting)" class="lg">
+      <button id="login-button2" ng-click="showCreate()" style="color:#05B921;" class="button button-positive button-block">Create New Wallet</button>
+      <button id="login-button3" ng-click="showRestore()" style="color:#05B921;" class="button button-positive button-block">Restore Existing Wallet</button>
+    </div>
+    <div id="login-container1" ng-show="createNew" class="lg">
+      <form id="login-form4" class="list">
+        <div id="login-markdown1" class="show-list-numbers-and-dots">
+          <p style="color:#000000;">Enter a 4 digit number</p>
+        </div>
+        <label class="item item-input lg" id="login-input3">
+          <span class="input-label">New Pin</span>
+          <input type="password" placeholder="" ng-model="password.newPin" pattern="[0-9]{4}">
+        </label>
+        <label class="item item-input lg" id="login-input5">
+          <span class="input-label">Re-enter Pin</span>
+          <input type="password" placeholder="" ng-model="password.confirm">
+        </label>
+        <button id="login-button1" ng-click="create()" ng-if="(password.newPin == password.confirm)" ng-show="password.newPin" style="color:#05B921;" class="button button-positive button-block">Create Wallet</button>
+        <button id="login-button5" ng-click="cancel()" class="button button-assertive button-block">Cancel</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

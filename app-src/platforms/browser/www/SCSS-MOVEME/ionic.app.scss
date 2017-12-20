@@ -1,0 +1,20 @@
+$stable: #EEEEDD;
+$positive: #004500;
+$popup-background-color: none !default;
+$base-background-color: none !default;
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "../www/lib/ionic/scss";
+.lg {
+	background: #EED;
+}
+
+.white {
+	background: white;
+	height: 148;
+	width: 148;
+}
+
+ion-view,.pane,.view {
+	background-color: none;
+}
+
